@@ -1,0 +1,20 @@
+div {
+    width: 350px;
+}
+
+img {
+    width: 350px;
+}
+
+.underlined {
+    text-decoration: underline;
+}
+
+.orange {
+    background: orange;
+}
+
+.red {
+    color: red;
+    font-weight: bold;
+}
