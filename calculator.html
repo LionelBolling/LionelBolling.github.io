@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Simple JavaScript Calculator</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+            margin: 0;
+            padding: 40px;
+            color: #222;
+        }
+
+        main {
+            max-width: 900px;
+            margin: auto;
+        }
+
+        h1,
+        h2 {
+            color: #fd8802;
+        }
+
+        button {
+            background-color: #fd8802;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 12px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #8f4c00;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: white;
+            margin-top: 20px;
+            margin-bottom: 30px;
+        }
+
+        th,
+        td {
+            border: 1px solid #999;
+            padding: 12px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #17365d;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #eaf1f8;
+        }
+
+        .error {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <h1>Simple JavaScript Calculator</h1>
+
+        <p>
+            Press the button to run the calculator.
+        </p>
+
+        <button type="button" onclick="startCalculator()">
+            Run Calculator
+        </button>
+
+        <div id="results"></div>
+    </main>
+
+    <script src="calculator.js"></script>
+</body>
+</html>
