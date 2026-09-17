@@ -2,6 +2,9 @@ let calculations = [];
 let validResults = [];
 let continueCalculating = true;
 
+
+// This will loop until the user clicks "Cancel"
+// This code ask the user for two numbers and an operator and then performs the calculation and stores the result.
 while (continueCalculating) {
     let xInput = prompt("Please Enter X:");
 
@@ -91,6 +94,7 @@ while (continueCalculating) {
     );
 }
 
+// This grabs all the calculations and displays them in a table format.
 document.write("<h2>Calculation Results</h2>");
 document.write("<table>");
 
