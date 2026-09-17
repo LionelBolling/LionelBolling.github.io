@@ -3,22 +3,22 @@ let validResults = [];
 let continueCalculating = true;
 
 while (continueCalculating) {
-    let xInput = prompt("Enter the first number (x):");
+    let xInput = prompt("Please Enter X:");
 
     if (xInput === null) {
         break;
     }
-
-    let operator = prompt(
-        "Enter an operator (+, -, *, /, or %):"
-    );
     
-    let yInput = prompt("Enter the second number (y):");
+    let yInput = prompt("Please Enter Y:");
 
     if (yInput === null) {
         break;
     }
 
+     let operator = prompt(
+        "Please Enter an operator (+, -, *, /, or %):"
+    );
+    
     if (operator === null) {
         break;
     }
@@ -95,10 +95,10 @@ document.write("<h2>Calculation Results</h2>");
 document.write("<table>");
 
 document.write("<tr>");
-document.write("<th>Number 1</th>");
-document.write("<th>Operator</th>");
-document.write("<th>Number 2</th>");
-document.write("<th>Result</th>");
+document.write("<th>x</th>");
+document.write("<th>op</th>");
+document.write("<th>y</th>");
+document.write("<th>result</th>");
 document.write("</tr>");
 
 if (calculations.length === 0) {
@@ -143,45 +143,35 @@ document.write("<h2>Summary of Valid Results</h2>");
 document.write("<table>");
 
 document.write("<tr>");
-document.write("<th>Minimum</th>");
-document.write("<th>Maximum</th>");
+document.write("<th>Min</th>");
+document.write("<th>Max</th>");
 document.write("<th>Average</th>");
 document.write("<th>Total</th>");
 document.write("</tr>");
 
-if (validResults.length === 0) {
-    document.write(
-        "<tr>" +
-        "<td colspan='4'>" +
-        "There are no valid results to summarize." +
-        "</td>" +
-        "</tr>"
-    );
-} else {
-    let minimum = validResults[0];
-    let maximum = validResults[0];
-    let total = 0;
 
-    for (let i = 0; i < validResults.length; i++) {
-        if (validResults[i] < minimum) {
-            minimum = validResults[i];
-        }
+let minimum = validResults[0];
+let maximum = validResults[0];
+let total = 0;
 
-        if (validResults[i] > maximum) {
-            maximum = validResults[i];
-        }
-
-        total = total + validResults[i];
+for (let i = 0; i < validResults.length; i++) {
+    if (validResults[i] < minimum) {
+        minimum = validResults[i];
     }
 
-    let average = total / validResults.length;
+    if (validResults[i] > maximum) {
+        maximum = validResults[i];
+    }
 
-   document.write("<tr>");
-    document.write("<th>x</th>");
-    document.write("<th>op</th>");
-    document.write("<th>y</th>");
-    document.write("<th>result</th>");
-    document.write("</tr>");
+    total = total + validResults[i];
 }
 
+let average = total / validResults.length;
+
+document.write("<tr>");
+document.write("<th>Min</th>");
+document.write("<th>Max</th>");
+document.write("<th>Average</th>");
+document.write("<th>Total</th>");
+document.write("</tr>");
 document.write("</table>");
