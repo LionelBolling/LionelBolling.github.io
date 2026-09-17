@@ -95,49 +95,52 @@ while (shouldContinue) {
 }
 
 // This grabs all the calculations and displays them in a table format.
-document.write("<h2>Summary of Valid Results</h2>");
+document.write("<h2>Calculation Results</h2>");
 document.write("<table>");
 
-// Header row
 document.write("<tr>");
-document.write("<th>Min</th>");
-document.write("<th>Max</th>");
-document.write("<th>Average</th>");
-document.write("<th>Total</th>");
+document.write("<th>x</th>");
+document.write("<th>op</th>");
+document.write("<th>y</th>");
+document.write("<th>result</th>");
 document.write("</tr>");
 
-if (validResults.length === 0) {
+if (calculations.length === 0) {
     document.write("<tr>");
     document.write(
-        "<td colspan='4'>There are no valid results to summarize.</td>"
+        "<td colspan='4'>No calculations were entered.</td>"
     );
     document.write("</tr>");
 } else {
-    let minimum = validResults[0];
-    let maximum = validResults[0];
-    let total = 0;
+    for (let i = 0; i < calculations.length; i++) {
+        document.write("<tr>");
 
-    for (let i = 0; i < validResults.length; i++) {
-        if (validResults[i] < minimum) {
-            minimum = validResults[i];
+        document.write(
+            "<td>" + calculations[i].x + "</td>"
+        );
+
+        document.write(
+            "<td>" + calculations[i].operator + "</td>"
+        );
+
+        document.write(
+            "<td>" + calculations[i].y + "</td>"
+        );
+
+        if (calculations[i].valid) {
+            document.write(
+                "<td>" + calculations[i].result + "</td>"
+            );
+        } else {
+            document.write(
+                "<td class='error'>" +
+                calculations[i].result +
+                "</td>"
+            );
         }
 
-        if (validResults[i] > maximum) {
-            maximum = validResults[i];
-        }
-
-        total = total + validResults[i];
+        document.write("</tr>");
     }
-
-    let average = total / validResults.length;
-
-    // Value row
-    document.write("<tr>");
-    document.write("<td>" + minimum + "</td>");
-    document.write("<td>" + maximum + "</td>");
-    document.write("<td>" + average + "</td>");
-    document.write("<td>" + total + "</td>");
-    document.write("</tr>");
 }
 
 document.write("</table>");
