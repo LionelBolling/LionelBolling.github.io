@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Simple JavaScript Calculator</title>
 
     <style>
@@ -15,28 +14,9 @@
             color: #222;
         }
 
-        main {
-            max-width: 900px;
-            margin: auto;
-        }
-
         h1,
         h2 {
             color: #fd8802;
-        }
-
-        button {
-            background-color: #fd8802;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            padding: 12px 20px;
-            font-size: 16px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #8f4c00;
         }
 
         table {
@@ -64,26 +44,15 @@
         }
 
         .error {
-            color: red;
+            color: rgb(0, 0, 0);
             font-weight: bold;
         }
     </style>
 </head>
 
 <body>
-    <main>
-        <h1>Simple JavaScript Calculator</h1>
-
-        <p>
-            Press the button to run the calculator.
-        </p>
-
-        <button type="button" onclick="startCalculator()">
-            Run Calculator
-        </button>
-
-        <div id="results"></div>
-    </main>
+    <h1>Calculator Assignment</h1>
+    <p>Enter two numbers and an arithmetic operator in the prompt boxes.</p>
 
     <script src="calculator.js"></script>
 </body>
