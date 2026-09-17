@@ -9,15 +9,15 @@ while (continueCalculating) {
         break;
     }
 
+    let operator = prompt(
+        "Enter an operator (+, -, *, /, or %):"
+    );
+    
     let yInput = prompt("Enter the second number (y):");
 
     if (yInput === null) {
         break;
     }
-
-    let operator = prompt(
-        "Enter an operator (+, -, *, /, or %):"
-    );
 
     if (operator === null) {
         break;
@@ -176,11 +176,11 @@ if (validResults.length === 0) {
 
     let average = total / validResults.length;
 
-    document.write("<tr>");
-    document.write("<td>" + minimum + "</td>");
-    document.write("<td>" + maximum + "</td>");
-    document.write("<td>" + average + "</td>");
-    document.write("<td>" + total + "</td>");
+   document.write("<tr>");
+    document.write("<th>x</th>");
+    document.write("<th>op</th>");
+    document.write("<th>y</th>");
+    document.write("<th>result</th>");
     document.write("</tr>");
 }
 
