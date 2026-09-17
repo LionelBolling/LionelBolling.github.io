@@ -1,188 +1,187 @@
-function startCalculator() {
-    const calculations = [];
-    const validResults = [];
-    
-    let continueCalculating = true;
+let calculations = [];
+let validResults = [];
+let continueCalculating = true;
 
-    while (continueCalculating) {
-        const firstInput = prompt("Enter the first number:");
+while (continueCalculating) {
+    let xInput = prompt("Enter the first number (x):");
 
-        if (firstInput === null) {
-            break;
-        }
+    if (xInput === null) {
+        break;
+    }
 
-        const operator = prompt(
-            "Enter an operator: +, -, *, /, or %"
-        );
+    let yInput = prompt("Enter the second number (y):");
 
-        if (operator === null) {
-            break;
-        }
+    if (yInput === null) {
+        break;
+    }
 
-        const secondInput = prompt("Enter the second number:");
+    let operator = prompt(
+        "Enter an operator (+, -, *, /, or %):"
+    );
 
-        if (secondInput === null) {
-            break;
-        }
+    if (operator === null) {
+        break;
+    }
 
-        const x = Number(firstInput);
-        const y = Number(secondInput);
+    let x = Number(xInput);
+    let y = Number(yInput);
+    let result;
+    let validResult = true;
 
-        let result;
-        let validResult = true;
+    if (
+        xInput === "" ||
+        yInput === "" ||
+        isNaN(xInput) ||
+        isNaN(yInput)
+    ) {
+        result = "wrong input number";
+        validResult = false;
+    } else {
+        switch (operator) {
+            case "+":
+                result = x + y;
+                break;
 
-        if (
-            firstInput.trim() === "" ||
-            secondInput.trim() === "" ||
-            isNaN(x) ||
-            isNaN(y)
-        ) {
-            result = "Error: Enter valid numbers.";
-            validResult = false;
-        } else {
-            switch (operator) {
-                case "+":
-                    result = x + y;
-                    break;
+            case "-":
+                result = x - y;
+                break;
 
-                case "-":
-                    result = x - y;
-                    break;
+            case "*":
+                result = x * y;
+                break;
 
-                case "*":
-                    result = x * y;
-                    break;
-
-                case "/":
-                    if (y === 0) {
-                        result = "Error: Cannot divide by zero.";
-                        validResult = false;
-                    } else {
-                        result = x / y;
-                    }
-                    break;
-
-                case "%":
-                    if (y === 0) {
-                        result = "Error: Cannot divide by zero.";
-                        validResult = false;
-                    } else {
-                        result = x % y;
-                    }
-                    break;
-
-                default:
-                    result = "Error: Invalid operator.";
+            case "/":
+                if (y === 0) {
+                    result = "computation error";
                     validResult = false;
-            }
+                } else {
+                    result = x / y;
+                }
+                break;
+
+            case "%":
+                if (y === 0) {
+                    result = "computation error";
+                    validResult = false;
+                } else {
+                    result = x % y;
+                }
+                break;
+
+            default:
+                result = "computation error";
+                validResult = false;
         }
+    }
 
-        calculations.push({
-            firstNumber: firstInput,
-            operator: operator,
-            secondNumber: secondInput,
-            result: result,
-            valid: validResult
-        });
+    calculations.push({
+        x: xInput,
+        operator: operator,
+        y: yInput,
+        result: result,
+        valid: validResult
+    });
 
-        if (validResult) {
-            validResults.push(result);
-        }
+    if (validResult) {
+        validResults.push(result);
+    }
 
-        continueCalculating = confirm(
-            "Would you like to perform another calculation?"
+    continueCalculating = confirm(
+        "Do you want to perform another calculation?"
+    );
+}
+
+document.write("<h2>Calculation Results</h2>");
+document.write("<table>");
+
+document.write("<tr>");
+document.write("<th>Number 1</th>");
+document.write("<th>Operator</th>");
+document.write("<th>Number 2</th>");
+document.write("<th>Result</th>");
+document.write("</tr>");
+
+if (calculations.length === 0) {
+    document.write(
+        "<tr><td colspan='4'>No calculations were entered.</td></tr>"
+    );
+} else {
+    for (let i = 0; i < calculations.length; i++) {
+        document.write("<tr>");
+
+        document.write(
+            "<td>" + calculations[i].x + "</td>"
         );
-    }
 
-    displayResults(calculations, validResults);
-}
+        document.write(
+            "<td>" + calculations[i].operator + "</td>"
+        );
 
-function displayResults(calculations, validResults) {
-    const resultsArea = document.getElementById("results");
+        document.write(
+            "<td>" + calculations[i].y + "</td>"
+        );
 
-    let output = "";
-
-    output += "<h2>Calculation Results</h2>";
-    output += "<table>";
-
-    output += "<tr>";
-    output += "<th>Number 1</th>";
-    output += "<th>Operator</th>";
-    output += "<th>Number 2</th>";
-    output += "<th>Result</th>";
-    output += "</tr>";
-
-    if (calculations.length === 0) {
-        output += "<tr>";
-        output += "<td colspan='4'>No calculations were entered.</td>";
-        output += "</tr>";
-    } else {
-        for (let i = 0; i < calculations.length; i++) {
-            const calculation = calculations[i];
-
-            output += "<tr>";
-            output += "<td>" + calculation.firstNumber + "</td>";
-            output += "<td>" + calculation.operator + "</td>";
-            output += "<td>" + calculation.secondNumber + "</td>";
-
-            if (calculation.valid) {
-                output += "<td>" + calculation.result + "</td>";
-            } else {
-                output +=
-                    "<td class='error'>" +
-                    calculation.result +
-                    "</td>";
-            }
-
-            output += "</tr>";
-        }
-    }
-
-    output += "</table>";
-
-    output += "<h2>Summary of Valid Results</h2>";
-    output += "<table>";
-
-    output += "<tr>";
-    output += "<th>Minimum</th>";
-    output += "<th>Maximum</th>";
-    output += "<th>Average</th>";
-    output += "<th>Total</th>";
-    output += "</tr>";
-
-    if (validResults.length === 0) {
-        output += "<tr>";
-        output +=
-            "<td colspan='4'>There are no valid results to summarize.</td>";
-        output += "</tr>";
-    } else {
-        let minimum = validResults[0];
-        let maximum = validResults[0];
-        let total = 0;
-
-        for (let i = 0; i < validResults.length; i++) {
-            if (validResults[i] < minimum) {
-                minimum = validResults[i];
-            }
-
-            if (validResults[i] > maximum) {
-                maximum = validResults[i];
-            }
-
-            total += validResults[i];
+        if (calculations[i].valid) {
+            document.write(
+                "<td>" + calculations[i].result + "</td>"
+            );
+        } else {
+            document.write(
+                "<td class='error'>" +
+                calculations[i].result +
+                "</td>"
+            );
         }
 
-        const average = total / validResults.length;
+        document.write("</tr>");
+    }
+}
 
-        output += "<tr>";
-        output += "<td>" + minimum + "</td>";
-        output += "<td>" + maximum + "</td>";
-        output += "<td>" + average.toFixed(2) + "</td>";
-        output += "<td>" + total + "</td>";
-        output += "</tr>";
+document.write("</table>");
+
+document.write("<h2>Summary of Valid Results</h2>");
+document.write("<table>");
+
+document.write("<tr>");
+document.write("<th>Minimum</th>");
+document.write("<th>Maximum</th>");
+document.write("<th>Average</th>");
+document.write("<th>Total</th>");
+document.write("</tr>");
+
+if (validResults.length === 0) {
+    document.write(
+        "<tr>" +
+        "<td colspan='4'>" +
+        "There are no valid results to summarize." +
+        "</td>" +
+        "</tr>"
+    );
+} else {
+    let minimum = validResults[0];
+    let maximum = validResults[0];
+    let total = 0;
+
+    for (let i = 0; i < validResults.length; i++) {
+        if (validResults[i] < minimum) {
+            minimum = validResults[i];
+        }
+
+        if (validResults[i] > maximum) {
+            maximum = validResults[i];
+        }
+
+        total = total + validResults[i];
     }
 
-    output += "</table>";
+    let average = total / validResults.length;
 
-    resultsArea.innerHTML = output;
+    document.write("<tr>");
+    document.write("<td>" + minimum + "</td>");
+    document.write("<td>" + maximum + "</td>");
+    document.write("<td>" + average + "</td>");
+    document.write("<td>" + total + "</td>");
+    document.write("</tr>");
 }
+
+document.write("</table>");
