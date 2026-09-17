@@ -98,6 +98,7 @@ while (shouldContinue) {
 document.write("<h2>Summary of Valid Results</h2>");
 document.write("<table>");
 
+// Header row
 document.write("<tr>");
 document.write("<th>Min</th>");
 document.write("<th>Max</th>");
@@ -130,6 +131,7 @@ if (validResults.length === 0) {
 
     let average = total / validResults.length;
 
+    // Value row
     document.write("<tr>");
     document.write("<td>" + minimum + "</td>");
     document.write("<td>" + maximum + "</td>");
