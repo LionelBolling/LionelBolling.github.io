@@ -154,28 +154,37 @@ document.write("<th>Total</th>");
 document.write("</tr>");
 
 
-let minimum = validResults[0];
-let maximum = validResults[0];
-let total = 0;
+if (validResults.length === 0) {
+    document.write("<tr>");
+    document.write(
+        "<td colspan='4'>There are no valid results to summarize.</td>"
+    );
+    document.write("</tr>");
+} else {
+    let minimum = validResults[0];
+    let maximum = validResults[0];
+    let total = 0;
 
-for (let i = 0; i < validResults.length; i++) {
-    if (validResults[i] < minimum) {
-        minimum = validResults[i];
+    for (let i = 0; i < validResults.length; i++) {
+        if (validResults[i] < minimum) {
+            minimum = validResults[i];
+        }
+
+        if (validResults[i] > maximum) {
+            maximum = validResults[i];
+        }
+
+        total = total + validResults[i];
     }
 
-    if (validResults[i] > maximum) {
-        maximum = validResults[i];
-    }
+    let average = total / validResults.length;
 
-    total = total + validResults[i];
+    document.write("<tr>");
+    document.write("<td>" + minimum + "</td>");
+    document.write("<td>" + maximum + "</td>");
+    document.write("<td>" + average + "</td>");
+    document.write("<td>" + total + "</td>");
+    document.write("</tr>");
 }
 
-let average = total / validResults.length;
-
-document.write("<tr>");
-document.write("<th>Min</th>");
-document.write("<th>Max</th>");
-document.write("<th>Average</th>");
-document.write("<th>Total</th>");
-document.write("</tr>");
 document.write("</table>");
