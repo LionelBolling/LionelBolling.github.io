@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Assignment 4</title>
+
+    <style>
+        form {
+            border: 1px solid silver;
+            width: 650px;
+            padding: 20px 10px;
+        }
+
+        .row {
+            margin-bottom: 16px;
+        }
+
+        .fieldLabel {
+            display: inline-block;
+            width: 150px;
+            text-align: right;
+            margin-right: 4px;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 120px;
+        }
+
+        select {
+            width: 132px;
+        }
+
+        .buttons {
+            margin-left: 158px;
+        }
+
+        #message {
+            margin-left: 0;
+        }
+
+        #message p {
+            margin-bottom: 16px;
+        }
+    </style>
+</head>
+
+<body>
+    <form id="registrationForm">
+        <div class="row">
+            <label class="fieldLabel" id="usernameLabel" for="username">
+                Username:
+            </label>
+            <input type="text" id="username" name="username">
+        </div>
+
+        <div class="row">
+            <label class="fieldLabel" id="emailLabel" for="email">
+                Email:
+            </label>
+            <input type="text" id="email" name="email">
+        </div>
+
+        <div class="row">
+            <label class="fieldLabel" id="phoneLabel" for="phone">
+                Phone number:
+            </label>
+            <input type="text" id="phone" name="phone">
+        </div>
+
+        <div class="row">
+            <label class="fieldLabel" id="passwordLabel" for="password">
+                Enter Password:
+            </label>
+            <input type="password" id="password" name="password">
+        </div>
+
+        <div class="row">
+            <label class="fieldLabel"
+                   id="confirmPasswordLabel"
+                   for="confirmPassword">
+                Confirm Password:
+            </label>
+            <input type="password"
+                   id="confirmPassword"
+                   name="confirmPassword">
+        </div>
+
+        <div class="row">
+            <span class="fieldLabel" id="genderLabel">Gender:</span>
+
+            <input type="radio" id="female" name="gender" value="Female">
+            <label for="female">Female</label>
+
+            <input type="radio" id="male" name="gender" value="Male">
+            <label for="male">Male</label>
+
+            <input type="radio" id="other" name="gender" value="Other">
+            <label for="other">Other</label>
+        </div>
+
+        <div class="row">
+            <label class="fieldLabel" id="ageLabel" for="age">
+                Age Group:
+            </label>
+
+            <select id="age" name="age">
+                <option value=""></option>
+                <option value="under21">&lt; 21 years old</option>
+                <option value="21to25">21 – 25 years old</option>
+                <option value="26to35">26 – 35 years old</option>
+                <option value="36to50">36 – 50 years old</option>
+                <option value="50">< 50 years old</option>
+            </select>
+        </div>
+
+        <div class="row">
+            <span class="fieldLabel">Favorite Music Genre:</span>
+
+            <label><input type="checkbox" name="music" value="Pop">Pop</label>
+            <label><input type="checkbox" name="music" value="Hiphop">Hiphop</label>
+            <label><input type="checkbox" name="music" value="Jazz">Jazz</label>
+            <label><input type="checkbox" name="music" value="Rock">Rock</label>
+            <label><input type="checkbox" name="music" value="Classical Music">Classical Music</label>
+            <label><input type="checkbox" name="music" value="Country">Country</label>
+        </div>
+
+        <div class="buttons">
+            <input type="button" value="submit" onclick="validateForm()">
+            <input type="reset" value="clear">
+        </div>
+
+        <div id="message"></div>
+    </form>
+
+    <script src="validation.js"></script>
+</body>
+</html>
